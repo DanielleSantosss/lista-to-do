@@ -12,6 +12,18 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const toDo = {
+      id: Math.random(),
+      title,
+      time,
+      done: false
+    }
+
+    console.log(toDo);
+
+      setTitle('')
+      setTime('')
   };
 
   return (
@@ -19,7 +31,7 @@ function App() {
       <div className='todoHeader'>
         <h1>Lista To Do</h1>
       </div>
-      <div className='formTodo'>
+      <div className='formToDo'>
         <h2>Insira sua próxima tarefa:</h2>
         <form onSubmit={handleSubmit}>
           <div className='formControl'>
@@ -33,10 +45,21 @@ function App() {
               required
             />
           </div>
-          <input type='submit' value='Enviar' />
+          <div className='formControl'>
+            <label htmlFor='time'>Qual a duração?</label>
+            <input
+              type='text'
+              name='time'
+              placeholder='Tempo estimado (em horas)'
+              onChange={(e) => setTime(e.target.value)}
+              value={time|| ''}
+              required
+            />
+          </div>
+          <input type='submit' value='Criar tarefa' />
         </form>
       </div>
-      <div className='listTodo'>
+      <div className='listToDo'>
         <h2>Lista de tarefas: </h2>
         {toDos.length === 0 && <p>Não há tarefas pendentes.</p>}
       </div>
